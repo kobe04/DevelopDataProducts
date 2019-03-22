@@ -1,0 +1,31 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+```
+
+
+
+# Map of capitals of Dutch provinces by population
+
+```{r map, fig.align='center', message=FALSE}
+dfCities <- data.frame(name=c("Groningen", "Leeuwarden", "Assen", "Zwolle", "Lelystad",
+                              "Arnhem", "Utrecht", "Haarlem", "Den Haag", "Middelburg",
+                              "Den Bosch", "Maastricht"),
+                       pop = c(202567, 107691, 67579, 125709, 77095, 157660,
+                               344384, 160287, 534158, 48445, 150889, 122397),
+                       lat = c(53.217616, 53.202397, 52.994474, 52.511446, 52.507763,
+                               51.979404, 52.091877, 52.381404, 52.077520, 51.500764,
+                               51.686875, 50.851199),
+                       lng = c(6.566226, 5.796079, 6.565047, 6.092477, 5.475960,
+                               5.910800, 5.120192, 4.635239, 4.308265, 3.615779,
+                               5.303059, 5.693528))
+dfCities %>% leaflet() %>%
+    addTiles %>%
+    addCircles(weight = 1, radius = sqrt(dfCities$pop) * 15)
+```
+
+## 22 March 2019
