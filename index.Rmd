@@ -28,4 +28,5 @@ dfCities %>% leaflet() %>%
     addCircles(weight = 1, radius = sqrt(dfCities$pop) * 15)
 ```
 
-## 22 March 2019
+## K. van Splunter
+### 22 March 2019
